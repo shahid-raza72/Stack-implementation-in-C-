@@ -1,0 +1,180 @@
+
+#include <iostream>
+
+using namespace std;
+
+class stack{
+    private:
+    int top;
+    int arr[5];
+    public:
+    stack()
+    {
+        top=-1;
+        for (int i=0;i<5;i++ ) 
+        {
+           arr[i]=0; 
+        }
+    }
+    bool isempty()
+    {
+        if(top==-1)
+        return true;
+        else 
+        return false;
+        
+    }
+
+    bool isfull()
+    {
+        if (top==4)
+        return true;
+        else
+        return false;
+        
+    }
+
+    void push(int value)
+    {
+        if(isfull())
+        {
+            cout<<"stack is overflow"<<endl;
+            
+        }
+    
+        else
+        { top++;
+            arr[top]=value;
+        
+        }
+    }
+        int pop()
+        {
+            if(isempty())
+            {
+                cout<<"stack is underflow"<<endl;
+            }
+            else
+            {
+                int tempvalue=top;
+                top=0;
+                top--;
+                return tempvalue;
+                
+            }
+        }
+         int count()
+         {
+             return (top+1);
+        
+         }
+        void display()
+        { 
+            if ( isempty())
+        {
+            cout<<"stack is underflow"<<endl;
+        }
+        else
+        {
+            cout<<"values in the stack are"<<endl;
+            for (int i=4;i>=0;i--)
+
+            {
+             cout<<arr[i]<<endl;   
+            }
+        }
+            
+        }
+        
+    int peek(int pos)
+    {
+        if(isempty())
+        {
+            cout<<"stack is underflow"<<endl;
+            return 0;
+        }
+        else
+        {
+            return arr[pos];
+            
+        }
+    }
+
+    void change(int pos, int value )
+    {
+    arr[pos]=value;
+    cout<<"change value is stack at position"<<pos<<endl;
+
+        
+    }
+};
+int main()
+{
+    stack s1;
+    int position , value,option;
+    do{
+        cout<< "what operation do you want to perform"<<" "<<"select option numebr to slect option"<<" "<<" press 0 to exit"<<endl;
+        cout<<"1. push()"<<endl;
+        cout<<"2. pop()"<<endl;
+        cout<<"3. isempty() "<<endl;
+        cout<<"4. isfull()"<<endl;
+        cout<<"5. peek()"<<endl;
+        cout<<"6. display()"<<endl;
+        cout<<"7. change()"<<endl;
+        cout<<"8. count()"<<endl;
+        cout<<"9c clearscreen()"<<endl<<endl;
+        cin>>option;
+        switch(option)
+        {
+            case 1:
+            cout<<"enter the to pus in the stack"<<endl;
+            cin>>value;
+            s1.push(value);
+            break;
+            case 2:
+            cout<<"pop dunction called"<<"popped  value"<<s1.pop()<<endl;
+            break;
+            case 3:
+            if(s1.isempty())
+            cout<<"stack is empty"<<endl;
+            else
+            cout<<"stack is not empty"<<endl;
+            break;
+            case 4:
+            if(s1.isfull())
+            cout<<"stack is full"<<endl;
+            else
+            cout<<"stack is not full"<<endl;
+            break;
+            case 5:
+            cout<<"enter the position you want to peek"<<endl;
+            cin>>position;
+            cout<<"peak function is called"<<position<<s1.peek(position)<<endl;
+            break;
+            case 6:
+            cout<<"display functionis called"<<endl;
+            s1.display();
+            break;
+            case 7:
+            cout<<"change function is called"<<endl;
+            cout<<"enter the position"<<endl;
+            cin>>position;
+            cout<<"enter the value"<<endl;
+            cin>>value;
+            s1.change(position , value);
+            break;
+            case 8:
+            cout<<"count function is called"<<s1.count()<<endl;
+            break;
+            case 9:
+            system("cls");
+            break;
+            default:
+            cout<<"enter proper number"<<endl;
+            
+            
+            
+        }
+    }while(option!=0);
+    return 0 ;
+}
